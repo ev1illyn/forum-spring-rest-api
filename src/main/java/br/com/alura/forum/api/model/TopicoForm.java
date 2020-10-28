@@ -1,13 +1,29 @@
 package br.com.alura.forum.api.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import br.com.alura.forum.api.repository.CursoRepository;
 import br.com.alura.forum.domain.model.Curso;
 import br.com.alura.forum.domain.model.Topico;
 
 public class TopicoForm {
 
+	@NotNull
+	@NotEmpty
+	@Length(min = 5)
 	private String titulo;
+
+	@NotNull
+	@NotEmpty
+	@Length(min = 10)
 	private String mensagem;
+
+	@NotNull
+	@NotEmpty
+	@Length(max = 200)
 	private String nomeCurso; // quando a requisição chegar com o nome do curso, será preciso buscar o curso pelo nome
 	
 	public String getTitulo() {
