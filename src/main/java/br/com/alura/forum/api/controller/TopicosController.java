@@ -3,6 +3,7 @@ package br.com.alura.forum.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,11 +18,17 @@ public class TopicosController {
 	private TopicoRepository topicoRepository;
 
 	@RequestMapping("/topicos")
-	public List<TopicoDto> lista() {
+	public List<TopicoDto> lista(String nomeCurso) {
 
-		List<Topico> topicos = topicoRepository.findAll();
-		
-		return TopicoDto.converter(topicos);
+		if (nomeCurso == null) {
+			List<Topico> topicos = topicoRepository.findAll();
+
+			return TopicoDto.converter(topicos);
+		} else {
+			List<Topico> topicos = topicoRepository.findByCursoNomeContaining(nomeCurso);
+
+			return TopicoDto.converter(topicos);
+		}
 
 	}
 
