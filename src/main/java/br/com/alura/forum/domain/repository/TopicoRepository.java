@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface TopicoRepository extends JpaRepository<Topico, Long> {
 
-	// retorna o filtro do campo do relacionamento Curso
-	List<Topico> findByCursoNomeContaining(String nomeCurso);
+	// retorna o filtro do campo do relacionamento Curso - findByRelacionamento_ColunaContaining
+	List<Topico> findByCurso_NomeContaining(String nomeCurso);
 	
 }
