@@ -9,8 +9,6 @@ A simple REST API with Spring Framework
 
 [ ] Profiles, Tests and Deploy
 
-### Getting Started
-
 ### Reference Documentation
 For further reference, please consider the following sections:
 
