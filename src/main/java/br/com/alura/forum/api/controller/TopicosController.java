@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.alura.forum.api.model.TopicoDto;
@@ -44,7 +43,7 @@ public class TopicosController {
 	}
 	
 	/* @RequestBody = parâmetros enviados no corpo da requisição são atribuídos ao parâmetro do método
-	 * @Valid = valida TopicoForm
+	 * @Valid = executa validacoes do Bean Validation no TopicoForm
 	 * */
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
