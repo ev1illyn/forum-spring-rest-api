@@ -6,12 +6,14 @@ import br.com.alura.forum.domain.model.Topico;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface TopicoRepository extends JpaRepository<Topico, Long> {
 
 	// retorna o filtro do campo do relacionamento Curso - findByRelacionamento_ColunaContaining
-	List<Topico> findByCurso_NomeContaining(String nomeCurso);
+	Page<Topico> findByCurso_NomeContaining(String nomeCurso, Pageable paginacao);
 	
 }
