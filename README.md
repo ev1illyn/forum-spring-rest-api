@@ -1,6 +1,13 @@
-#SPRING-BOOT-API-REST
+# forum-spring-rest-api
+A simple REST API with Spring Framework
 
-### Getting Started
+[x] Endpoints, Spring Data Jpa, Bean Validation and Http methods
+
+[ ] Refactor Controllers
+
+[ ] API secutiry, Cache and Monitoring
+
+[ ] Profiles, Tests and Deploy
 
 ### Reference Documentation
 For further reference, please consider the following sections:
