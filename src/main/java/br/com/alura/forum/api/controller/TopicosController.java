@@ -6,8 +6,9 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
@@ -45,8 +46,9 @@ public class TopicosController {
 	private CursoRepository cursoRepository;
 
 	@GetMapping
+	@Cacheable(value = "listaDeTopicos")
 	public Page<TopicoDto> listar(@RequestParam(required = false) String nomeCurso, 
-			@PageableDefault(sort = "id", direction = Direction.ASC, page = 0, size = 10) Pageable paginacao) {
+			@PageableDefault(sort = "id", direction = Direction.ASC, page = 0, size = 20) Pageable paginacao) {
 		
 		Page<Topico> topicos = nomeCurso == null ? topicoRepository.findAll(paginacao)
 				: topicoRepository.findByCurso_NomeContaining(nomeCurso, paginacao);
@@ -63,6 +65,7 @@ public class TopicosController {
 	 */
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)
 	public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid TopicoForm topicoForm,
 			UriComponentsBuilder uriBuilder) {
 
@@ -86,6 +89,7 @@ public class TopicosController {
 
 	@PutMapping("/{topicoId}")
 	@Transactional
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)
 	public ResponseEntity<TopicoDto> atualizar(@PathVariable Long topicoId, @RequestBody @Valid AtualizacaoTopicoForm atualizacaoTopicoForm) {
 		Optional<Topico> optional = topicoRepository.findById(topicoId);
 
@@ -97,6 +101,7 @@ public class TopicosController {
 	}
 
 	@DeleteMapping("/{topicoId}")
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)
 	public ResponseEntity<TopicoDto> remover(@PathVariable Long topicoId) {
 		Optional<Topico> optional = topicoRepository.findById(topicoId);
 
