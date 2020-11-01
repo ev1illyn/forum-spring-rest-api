@@ -3,11 +3,11 @@ A simple REST API with Spring Framework
 
 [x] Endpoints, Spring Data Jpa, Bean Validation and Http methods
 
-[ ] Refactor Controllers
-
 [ ] API secutiry, Cache and Monitoring
 
 [ ] Profiles, Tests and Deploy
+
+[ ] Refactor Code
 
 ### Reference Documentation
 For further reference, please consider the following sections:
