@@ -22,7 +22,7 @@ public class TokenService {
 	
 	public String gerarToken(Authentication authentication) {
 		Usuario logado = (Usuario) authentication.getPrincipal();
-		
+			
 		Date hoje = new Date();
 		Date dataExpiracao = new Date(hoje.getTime() + 
 				Long.parseLong(expiration));
