@@ -1,12 +1,15 @@
 # forum-spring-rest-api
 A simple REST API with Spring Framework
 
-[x] Endpoints, Spring Data Jpa, Bean Validation and Http methods
-
-[ ] API secutiry, Cache and Monitoring
-
-[ ] Profiles, Tests and Deploy
-
+[x] Endpoints, Http methods
+[x] Spring Data Jpa
+[x] Bean Validation
+[x] Cache
+[x] API secutiry
+[x] Monitoring
+[ ] Profiles
+[ ] Tests
+[ ] Deploy
 [ ] Refactor Code
 
 ### Reference Documentation
