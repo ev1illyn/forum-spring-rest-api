@@ -11,13 +11,19 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 public class AutenticacaoViaTokerFilter extends OncePerRequestFilter {
 
+	private TokenService tokenService;
+
+	public AutenticacaoViaTokerFilter(TokenService tokenService) {
+		this.tokenService = tokenService;
+	}
+
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		
 		String token = gerarToken(request);
 		
-		System.out.println(token);
+		boolean valido = tokenService.tokenValido(token);
 		
 		filterChain.doFilter(request, response);
 		
