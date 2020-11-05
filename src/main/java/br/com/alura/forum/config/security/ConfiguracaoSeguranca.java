@@ -14,6 +14,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import br.com.alura.forum.api.repository.UsuarioRepository;
+
 @EnableWebSecurity
 @Configuration
 public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
@@ -23,6 +25,9 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
 
 	@Autowired
 	private TokenService tokenService;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	@Override
 	@Bean
@@ -44,10 +49,10 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
 			.antMatchers(HttpMethod.GET, "/topicos/*").permitAll() // liberando acesso apenas às requisições do tipo GET/*
 			.antMatchers(HttpMethod.POST, "/auth").permitAll() // liberando acesso apenas às requisições do tipo GET/*
 			.anyRequest().authenticated() // restrigindo acesso ao restante das requisições
-			//.and().formLogin(); // redirecionando user para o form de login
+			//.and().formLogin(); // redirecionando user para o form de login padrão
 			.and().csrf().disable()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // gerenciamento Stateless
-			.and().addFilterBefore(new AutenticacaoViaTokerFilter(tokenService), UsernamePasswordAuthenticationFilter.class); // filtrando a cada requisição para receber token
+			.and().addFilterBefore(new AutenticacaoViaTokerFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class); // filtrando a cada requisição para receber token
 	}
 
 	// configuracoes de recursos estaticos(js, css, img)
