@@ -2,14 +2,23 @@
 A simple REST API with Spring Framework
 
 [x] Endpoints, Http methods
+
 [x] Spring Data Jpa
+
 [x] Bean Validation
+
 [x] Cache
+
 [x] API secutiry
+
 [x] Monitoring
+
 [ ] Profiles
+
 [ ] Tests
+
 [ ] Deploy
+
 [ ] Refactor Code
 
 ### Reference Documentation
