@@ -49,6 +49,7 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
 			.antMatchers(HttpMethod.GET, "/topicos/*").permitAll() // liberando acesso apenas às requisições do tipo GET/*
 			.antMatchers(HttpMethod.POST, "/auth").permitAll() // liberando acesso apenas às requisições do tipo GET/*
 			.antMatchers(HttpMethod.GET, "/actuator/**").permitAll() // liberando acesso ao monitorador
+			.antMatchers(HttpMethod.DELETE, "/topicos/*").hasRole("MODERADOR") // liberando acesso apenas se estiver autorizado(admin)
 			.anyRequest().authenticated() // restrigindo acesso ao restante das requisições
 			//.and().formLogin(); // redirecionando user para o form de login padrão
 			.and().csrf().disable()
