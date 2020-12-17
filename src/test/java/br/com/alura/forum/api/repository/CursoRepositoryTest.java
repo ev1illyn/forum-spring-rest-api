@@ -36,8 +36,7 @@ public class CursoRepositoryTest {
 	public void testFindByNameCourseNotRegistered() {
 		String nomeCurso = "Curso não cadastrado";
 		Curso curso = repository.findByNome(nomeCurso);
-		Assert.assertNotNull(curso);
-		Assert.assertEquals(nomeCurso, curso.getNome());
+		Assert.assertNull(curso);
 	}
 
 }
