@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.alura.forum.domain.model.Curso;
@@ -14,11 +15,15 @@ import br.com.alura.forum.domain.model.Curso;
 @RunWith(SpringRunner.class)
 @DataJpaTest // anotação do Spring específica para testar repositórios
 @AutoConfigureTestDatabase(replace = Replace.NONE)
+@ActiveProfiles("test")
 public class CursoRepositoryTest {
 
 	@Autowired
 	private CursoRepository repository;
 	
+	/**
+	 * testa busca de curso pelo nome
+	 */
 	@Test
 	public void testFindByNameCourse() {
 		String nomeCurso = "Spring Boot";
