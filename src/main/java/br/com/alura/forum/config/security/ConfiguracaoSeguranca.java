@@ -49,9 +49,9 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.antMatchers(HttpMethod.GET, "/topicos").permitAll() // liberando acesso apenas às requisições do tipo GET
 			.antMatchers(HttpMethod.GET, "/topicos/*").permitAll() // liberando acesso apenas às requisições do tipo GET/*
-			.antMatchers(HttpMethod.POST, "/auth").permitAll() // liberando acesso apenas às requisições do tipo GET/*
+			.antMatchers(HttpMethod.POST, "/auth").permitAll() // liberando acesso apenas às requisições do tipo POST/*
 			.antMatchers(HttpMethod.GET, "/actuator/**").permitAll() // liberando acesso ao monitorador
-			.antMatchers(HttpMethod.DELETE, "/topicos/*").hasRole("MODERADOR") // liberando acesso apenas se estiver autorizado(admin)
+			//.antMatchers(HttpMethod.DELETE, "/topicos/*").hasRole("MODERADOR") // liberando acesso apenas se estiver autorizado(admin)
 			.anyRequest().authenticated() // restrigindo acesso ao restante das requisições
 			//.and().formLogin(); // redirecionando user para o form de login padrão
 			.and().csrf().disable()
@@ -63,6 +63,10 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(new BCryptPasswordEncoder().encode("admin"));
 	}
 	
 }

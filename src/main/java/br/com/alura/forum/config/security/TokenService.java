@@ -21,7 +21,12 @@ public class TokenService {
 	@Value("${forum.jwt.secret}")
 	private String secret;
 
+	/** Gera token
+	 * @param authentication
+	 * @return
+	 */
 	public String gerarToken(Authentication authentication) {
+		
 		Usuario logado = (Usuario) authentication.getPrincipal();
 
 		Date hoje = new Date();
@@ -36,18 +41,27 @@ public class TokenService {
 				.signWith(SignatureAlgorithm.HS256, secret)
 				.compact();
 	}
-
+	
+	/** Recupera token e info
+	 * @param token
+	 * @return
+	 */
 	public boolean tokenValido(String token) {
 		try {
-			Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token); // recupera token e info
+			Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token);
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
 	}
 
+	/**
+	 * Recupera body com id do usuário
+	 * @param token
+	 * @return
+	 */
 	public Long getIdUsuario(String token) {
-		Claims claims = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody(); // recupera body com id do usuário
+		Claims claims = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody();
 		return Long.parseLong(claims.getSubject());
 	}
 }
