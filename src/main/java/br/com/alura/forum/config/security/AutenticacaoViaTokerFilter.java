@@ -13,8 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import br.com.alura.forum.api.repository.UsuarioRepository;
-import br.com.alura.forum.domain.model.Usuario;
+import br.com.alura.forum.model.Usuario;
+import br.com.alura.forum.repository.UsuarioRepository;
 
 public class AutenticacaoViaTokerFilter extends OncePerRequestFilter {
 

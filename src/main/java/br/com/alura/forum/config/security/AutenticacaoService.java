@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.alura.forum.api.repository.UsuarioRepository;
-import br.com.alura.forum.domain.model.Usuario;
+import br.com.alura.forum.model.Usuario;
+import br.com.alura.forum.repository.UsuarioRepository;
 
 @Service
 public class AutenticacaoService implements UserDetailsService {

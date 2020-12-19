@@ -13,9 +13,9 @@ A simple REST API with Spring Framework
 
 [x] Monitoring
 
-[ ] Profiles
+[x] Profiles
 
-[ ] Tests
+[] Tests
 
 [ ] Deploy
 
