@@ -20,8 +20,67 @@ A simple REST API with Spring Framework
 [x] Deploy (via Docker and Heroku)
 
 
+### Demo
 
-### How to run the project
+#### Authorization
+
+At first, you have to input your email and password to receive your token, so you can make some priviliged requests!!
+![authorization](https://i.snipboard.io/JRuHfs.jpg)
+
+An example of making a privileged request:
+![authorization-example](https://i.snipboard.io/z2SXnc.jpg)
+
+#### Topics
+
+The forum topics have pagination and cache settings
+![forum-topics](https://i.snipboard.io/qhEXCu.jpg)
+
+#### List a specific topic
+
+![specific-topic](https://i.snipboard.io/g2APzJ.jpg)
+
+#### Insert topic
+
+![insert-topic](https://i.snipboard.io/izwTFM.jpg)
+
+#### Update topic
+
+![update-topic](https://i.snipboard.io/RVjXk4.jpg)
+
+#### Remove topic
+
+![remove-topic](https://i.snipboard.io/nuOAY2.jpg)
+
+### How to run the project (Docker)
+
+
+#### Clone the project
+
+$ git clone https://github.com/ev1illyn/forum-spring-rest-api.git
+
+
+#### *Make sure you have Maven installed* and run the following command at the project directory:
+
+/forum-spring-rest-api$ mvn clean package
+
+
+#### Run the docker command to build a image from the Dockerfile inside the project:
+
+/forum-spring-rest-api$ sudo docker build -t alura/forum .
+
+
+#### Check if the "alura/forum" image was created:
+
+/forum-spring-rest-api$ sudo docker images
+
+
+#### Run the following docker command to start the project:
+
+/forum-spring-rest-api$ sudo docker run -p 8080:8080 -e SPRING_PROFILES_ACTIVE=prod -e FORUM_DATABASE_URL=jdbc:h2:mem:alura-forum -e FORUM_DATABASE_USERNAME=sa -e FORUM_DATABASE_PASSWORD= -e FORUM_JWT_SECRET=123456 img-alura/forum
+
+#### Access the following url:
+
+http://localhost:8080/topicos
 
 
 ### Reference Documentation
