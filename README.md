@@ -56,27 +56,33 @@ The forum topics have pagination and cache settings
 
 #### Clone the project
 
+```console
 $ git clone https://github.com/ev1illyn/forum-spring-rest-api.git
-
+```
 
 #### *Make sure you have Maven installed* and run the following command at the project directory:
 
+```console
 /forum-spring-rest-api$ mvn clean package
-
+```
 
 #### Run the docker command to build a image from the Dockerfile inside the project:
 
+```console
 /forum-spring-rest-api$ sudo docker build -t alura/forum .
-
+```
 
 #### Check if the "alura/forum" image was created:
 
+```console
 /forum-spring-rest-api$ sudo docker images
-
+```
 
 #### Run the following docker command to start the project:
 
+```console
 /forum-spring-rest-api$ sudo docker run -p 8080:8080 -e SPRING_PROFILES_ACTIVE=prod -e FORUM_DATABASE_URL=jdbc:h2:mem:alura-forum -e FORUM_DATABASE_USERNAME=sa -e FORUM_DATABASE_PASSWORD= -e FORUM_JWT_SECRET=123456 img-alura/forum
+```
 
 #### Access the following url:
 
