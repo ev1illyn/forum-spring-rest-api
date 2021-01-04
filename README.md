@@ -17,7 +17,11 @@ A simple REST API with Spring Framework
 
 [x] Tests
 
-[ ] Deploy
+[x] Deploy (via Docker and Heroku)
+
+
+
+### How to run the project
 
 
 ### Reference Documentation
