@@ -27,8 +27,12 @@ A simple REST API with Spring Framework
 At first, you have to input your email and password to receive your token, so you can make some priviliged requests!!
 ![authorization](https://i.snipboard.io/JRuHfs.jpg)
 
-An example of making a privileged request:
+An example of a privileged request:
 ![authorization-example](https://i.snipboard.io/z2SXnc.jpg)
+
+In case you don't have a privileged access, you'll see the following message: 
+
+![status-403-forbidden](https://i.snipboard.io/cAUKH0.jpg)
 
 #### Topics
 
@@ -63,16 +67,16 @@ $ git clone https://github.com/ev1illyn/forum-spring-rest-api.git
 #### *Make sure you have Maven installed* and run the following command at the project directory:
 
 ```console
-/forum-spring-rest-api$ mvn clean package
+/forum-spring-rest-api$ mvn -DskipTests=true clean package
 ```
 
 #### Run the docker command to build a image from the Dockerfile inside the project:
 
 ```console
-/forum-spring-rest-api$ sudo docker build -t alura/forum .
+/forum-spring-rest-api$ sudo docker build -t img-alura/forum .
 ```
 
-#### Check if the "alura/forum" image was created:
+#### Check if the "img-alura/forum" image was created:
 
 ```console
 /forum-spring-rest-api$ sudo docker images
@@ -81,12 +85,12 @@ $ git clone https://github.com/ev1illyn/forum-spring-rest-api.git
 #### Run the following docker command to start the project:
 
 ```console
-/forum-spring-rest-api$ sudo docker run -p 8080:8080 -e SPRING_PROFILES_ACTIVE=prod -e FORUM_DATABASE_URL=jdbc:h2:mem:alura-forum -e FORUM_DATABASE_USERNAME=sa -e FORUM_DATABASE_PASSWORD= -e FORUM_JWT_SECRET=123456 img-alura/forum
+/forum-spring-rest-api$ sudo docker run -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=prod -e FORUM_DATABASE_URL=jdbc:h2:mem:alura-forum -e FORUM_DATABASE_USERNAME=sa -e FORUM_DATABASE_PASSWORD= -e FORUM_JWT_SECRET=123456 img-alura/forum
 ```
 
 #### Access the following url:
 
-http://localhost:8080/topicos
+[http://localhost:8080/topicos](http://localhost:8080/topicos)
 
 
 ### Reference Documentation

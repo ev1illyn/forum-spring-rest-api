@@ -9,10 +9,10 @@ INSERT INTO CURSO(nome, categoria) VALUES('HTML 5', 'Front-end');
 INSERT INTO CURSO(nome, categoria) VALUES('Introdução ao Docker', 'DevOps');
 INSERT INTO CURSO(nome, categoria) VALUES('Angular', 'Front-end');
 INSERT INTO CURSO(nome, categoria) VALUES('React', 'Front-end');
-INSERT INTO PERFIL(id, nome) VALUES(1, 'ROLE_ADMIN');
-INSERT INTO PERFIL(id, nome) VALUES(2, 'ROLE_ALUNO');
-INSERT INTO USUARIO_PERFIS(usuario_id, perfis_id) VALUES(1,1);
-INSERT INTO USUARIO_PERFIS(usuario_id, perfis_id) VALUES(2,2);
+INSERT INTO PERFIL(id, nome) VALUES(12, 'ROLE_ADMIN');
+INSERT INTO PERFIL(id, nome) VALUES(21, 'ROLE_ALUNO');
+INSERT INTO USUARIO_PERFIS(usuario_id, perfis_id) VALUES(1,12);
+INSERT INTO USUARIO_PERFIS(usuario_id, perfis_id) VALUES(2,21);
 
 INSERT INTO TOPICO(titulo, mensagem, data_criacao, status, autor_id, curso_id) VALUES(
 'Problemas de dependências', 'Erro ao criar projeto', '2020-03-01 18:00:00', 'NAO_RESPONDIDO', 1, 1);
